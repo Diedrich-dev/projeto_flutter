@@ -1,7 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:app_gestao/Data/senha_sqlite_datasource.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
+
+import 'Data/senha_sqlite_datasource.dart';
 
 class recuperarSenha extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _recuperarSenha extends State<recuperarSenha> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Recuperar sua senha'),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.blue,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             color: Colors.black38,
@@ -33,7 +34,7 @@ class _recuperarSenha extends State<recuperarSenha> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
           onPressed: () async {
             if (await SenhaSQLiteDataSource()

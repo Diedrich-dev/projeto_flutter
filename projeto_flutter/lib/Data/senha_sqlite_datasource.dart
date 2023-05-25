@@ -43,6 +43,7 @@ class SenhaSQLiteDataSource {
       senha.descricao = row['descricao'];
       senha.login = row['login'];
       senha.senha = row['senha'];
+      senha.senha = row['email'];
       senhas.add(senha);
     }
     print(senhas);

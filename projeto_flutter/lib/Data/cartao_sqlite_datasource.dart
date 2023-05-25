@@ -1,10 +1,8 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:app_gestao/Data/perfil_Entity.dart';
-import 'package:app_gestao/Data/cartao_entity.dart';
 import 'conexao.dart';
 import 'cartao_entity.dart';
-import 'package:app_gestao/Data/data_container.dart';
+import 'data_container.dart';
 
 class CartaoSQLiteDataSource {
   Future create(CartaoEntity cartao) async {

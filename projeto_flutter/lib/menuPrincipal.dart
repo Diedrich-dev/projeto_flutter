@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:app_gestao/cadSenha.dart';
-import 'package:app_gestao/cadCartao.dart';
-import 'package:app_gestao/perfilUsuario.dart';
+import 'package:projeto_flutter/perfilUsuario.dart';
 
+import 'cadCartao.dart';
+import 'cadSenha.dart';
 import 'cadUsuario.dart';
 import 'geradorSenha.dart';
 import 'listarCartoes.dart';
@@ -29,7 +29,7 @@ class _menuprincipalstate extends State<menuprincipal> {
           child: ListView(
             children: [
               UserAccountsDrawerHeader(
-                decoration: BoxDecoration(color: Colors.green),
+                decoration: BoxDecoration(color: Colors.blue),
                 accountName: Text("Sou eu"),
                 accountEmail: Text("SouEu@gmail.com"),
                 currentAccountPicture: CircleAvatar(
@@ -128,13 +128,13 @@ class _menuprincipalstate extends State<menuprincipal> {
           ),
         ),
         appBar: AppBar(
-          backgroundColor: Colors.teal,
-          title: const Text('App de Senhas e Cartões'),
+          backgroundColor: Colors.blue,
+          title: const Text('Menu'),
         ),
         body: Center(
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.teal,
+              backgroundColor: Colors.blue,
             ),
             child: Text('Voltar'),
             onPressed: () {

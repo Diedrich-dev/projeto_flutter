@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_gestao/recuperarsenha.dart';
+import 'package:projeto_flutter/recuperarsenha.dart';
 import 'Data/perfil_sqlite_datasource.dart';
 import 'cadusuario.dart';
 import 'menuPrincipal.dart';
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Login'),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.blue,
         ),
         body: Login(),
       ),
@@ -57,8 +57,8 @@ class _Login extends State<Login> {
               alignment: Alignment.center,
               width: 200,
               height: 200,
-              child: Image.network(
-                  "https://cdn.pixabay.com/photo/2017/09/26/21/54/logo-2790253_960_720.png"),
+              // child: Image.network(
+              //     "https://pixel.cuboup.com/wp-content/uploads/edd/2022/06/Icone-Cadeado-Fechado.jpg"),
             ),
             Container(
               padding: const EdgeInsets.all(10),

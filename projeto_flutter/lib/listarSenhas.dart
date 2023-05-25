@@ -1,18 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:app_gestao/cadSenha.dart';
-import 'package:app_gestao/cadCartao.dart';
-import 'package:app_gestao/Data/senha_entity.dart';
-import 'package:app_gestao/Data/senha_sqlite_datasource.dart';
-import 'package:app_gestao/Data/cartao_entity.dart';
-import 'package:app_gestao/Data/cartao_sqlite_datasource.dart';
+// ignore_for_file: prefer_const_constructors
 
-class ListarCastoes extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+import 'Data/senha_entity.dart';
+import 'Data/senha_sqlite_datasource.dart';
+import 'cadSenha.dart';
+
+class ListarSenhas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Lista de cartoes",
+      title: "Lista de senhas",
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
     );
@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Lista de Cartões"),
+        title: Text("Senhas cadastradas"),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.black38,
@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           ElevatedButton(
               onPressed: () {
-                CartaoSQLiteDataSource().deletarCartoes();
+                SenhaSQLiteDataSource().deletarSenhas();
                 setState(() {});
               },
               child: Text(
@@ -55,44 +55,34 @@ class _MyHomePageState extends State<MyHomePage> {
               ))
         ],
       ),
-      body: FutureBuilder<List<CartaoEntity>>(
-          future: CartaoSQLiteDataSource().getAllCartao(),
+      body: FutureBuilder<List<SenhaEntity>>(
+          future: SenhaSQLiteDataSource().getAllSenha(),
           builder: (BuildContext context,
-              AsyncSnapshot<List<CartaoEntity>> snapshot) {
+              AsyncSnapshot<List<SenhaEntity>> snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
                 physics: BouncingScrollPhysics(),
                 itemCount: snapshot.data?.length,
                 itemBuilder: (BuildContext context, int index) {
-                  CartaoEntity item = snapshot.data![index];
+                  SenhaEntity item = snapshot.data![index];
                   return Dismissible(
                     key: UniqueKey(),
-                    background: Container(color: Colors.green),
+                    background: Container(color: Colors.blue),
                     onDismissed: (direction) {
-                      CartaoSQLiteDataSource().deletarCartao(item);
+                      SenhaSQLiteDataSource().deletarSenha(item);
                     },
                     child: ListTile(
                       title: Text(item.descricao!),
-                      subtitle: Text(item.numero!.toString()),
+                      subtitle: Text(item.login!),
                       leading:
-                          CircleAvatar(child: Text(item.cartaoID.toString())),
+                          CircleAvatar(child: Text(item.senhaID.toString())),
                       onTap: () {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 title: Text(item.descricao!),
-                                content: Text("Número: " +
-                                    item.numero!.toString() +
-                                    "\n" +
-                                    "Senha: " +
-                                    item.senha! +
-                                    "\n" +
-                                    "Validade: " +
-                                    item.validade!.toString() +
-                                    "\n" +
-                                    "CVV: " +
-                                    item.cvv.toString()),
+                                content: Text("Email: " + item.email! + "\n" + "Login: " + item.login! + "\n" + "Senha: " + item.senha!),
                               );
                             });
                       },
@@ -108,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => cadcartao()));
+              .push(MaterialPageRoute(builder: (context) => cadsenha()));
         },
       ),
     );

@@ -1,17 +1,16 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:app_gestao/cadSenha.dart';
-import 'package:app_gestao/Data/senha_entity.dart';
-import 'package:app_gestao/Data/senha_sqlite_datasource.dart';
 
-class ListarSenhas extends StatelessWidget {
+import 'Data/cartao_entity.dart';
+import 'Data/cartao_sqlite_datasource.dart';
+import 'cadCartao.dart';
+
+class ListarCastoes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Lista de senhas",
+      title: "Lista de cartoes",
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
     );
@@ -36,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
   build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Senhas cadastradas"),
+        title: Text("Lista de Cartões"),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.black38,
@@ -45,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           ElevatedButton(
               onPressed: () {
-                SenhaSQLiteDataSource().deletarSenhas();
+                CartaoSQLiteDataSource().deletarCartoes();
                 setState(() {});
               },
               child: Text(
@@ -54,34 +53,44 @@ class _MyHomePageState extends State<MyHomePage> {
               ))
         ],
       ),
-      body: FutureBuilder<List<SenhaEntity>>(
-          future: SenhaSQLiteDataSource().getAllSenha(),
+      body: FutureBuilder<List<CartaoEntity>>(
+          future: CartaoSQLiteDataSource().getAllCartao(),
           builder: (BuildContext context,
-              AsyncSnapshot<List<SenhaEntity>> snapshot) {
+              AsyncSnapshot<List<CartaoEntity>> snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
                 physics: BouncingScrollPhysics(),
                 itemCount: snapshot.data?.length,
                 itemBuilder: (BuildContext context, int index) {
-                  SenhaEntity item = snapshot.data![index];
+                  CartaoEntity item = snapshot.data![index];
                   return Dismissible(
                     key: UniqueKey(),
                     background: Container(color: Colors.blue),
                     onDismissed: (direction) {
-                      SenhaSQLiteDataSource().deletarSenha(item);
+                      CartaoSQLiteDataSource().deletarCartao(item);
                     },
                     child: ListTile(
                       title: Text(item.descricao!),
-                      subtitle: Text(item.login!),
+                      subtitle: Text(item.numero!.toString()),
                       leading:
-                          CircleAvatar(child: Text(item.senhaID.toString())),
+                          CircleAvatar(child: Text(item.cartaoID.toString())),
                       onTap: () {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: Text(item.login!),
-                                content: Text(item.senha!),
+                                title: Text(item.descricao!),
+                                content: Text("Número: " +
+                                    item.numero!.toString() +
+                                    "\n" +
+                                    "Senha: " +
+                                    item.senha! +
+                                    "\n" +
+                                    "Validade: " +
+                                    item.validade!.toString() +
+                                    "\n" +
+                                    "CVV: " +
+                                    item.cvv.toString()),
                               );
                             });
                       },
@@ -97,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => cadsenha()));
+              .push(MaterialPageRoute(builder: (context) => cadcartao()));
         },
       ),
     );

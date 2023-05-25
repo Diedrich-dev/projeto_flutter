@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, unused_element, camel_case_types
 
-import 'package:app_gestao/Data/perfil_sqlite_datasource.dart';
 import 'package:flutter/material.dart';
 
 import 'Data/perfil_Entity.dart';
+import 'Data/perfil_sqlite_datasource.dart';
 
 class cadusuario extends StatefulWidget {
   @override
@@ -30,7 +30,7 @@ class _cadusuarioState extends State<cadusuario> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Cadastro de usuário'),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.blue,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             color: Colors.black38,
@@ -103,7 +103,7 @@ class _cadusuarioState extends State<cadusuario> {
           hintText: "Informe a sua senha",
           labelText: 'Senha',
           helperText: "Digite uma senha para a sua segurança",
-          helperStyle: TextStyle(color: Colors.green),
+          helperStyle: TextStyle(color: Colors.blue),
           suffixIcon: IconButton(
             icon: Icon(ocultarSenha ? Icons.visibility_off : Icons.visibility),
             onPressed: () {
@@ -131,7 +131,7 @@ class _cadusuarioState extends State<cadusuario> {
           border: UnderlineInputBorder(),
           labelText: 'Confirmar Senha',
           helperText: "Digite novamente a senha",
-          helperStyle: TextStyle(color: Colors.green),
+          helperStyle: TextStyle(color: Colors.blue),
           suffixIcon: IconButton(
             icon: Icon(ocultarSenha ? Icons.visibility : Icons.visibility_off),
             onPressed: () {
@@ -166,7 +166,7 @@ class _cadusuarioState extends State<cadusuario> {
             }
           },
           style: ElevatedButton.styleFrom(
-            primary: Colors.green,
+            primary: Colors.blue,
           ),
           child: const Text('Cadastrar'),
         ),

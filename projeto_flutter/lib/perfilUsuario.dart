@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:app_gestao/cadusuario.dart';
 
 class perfilUsuario extends StatelessWidget {
   const perfilUsuario({Key? key}) : super(key: key);
@@ -11,7 +10,7 @@ class perfilUsuario extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Perfil do usário',
+      title: 'Perfil do usuário',
       home: HomePage(),
     );
   }
@@ -49,7 +48,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Perfil do usuário'),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.blue,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.black38,
@@ -63,8 +62,8 @@ class _HomePageState extends State<HomePage> {
             Center(
               child: ElevatedButton(
                 onPressed: _openImagePicker,
-                child: const Text('Selecione a imagem'),
-                style: ElevatedButton.styleFrom(primary: Colors.green),
+                child: const Text('Selecione uma imagem'),
+                style: ElevatedButton.styleFrom(primary: Colors.blue),
               ),
             ),
             const SizedBox(height: 35),
@@ -77,11 +76,11 @@ class _HomePageState extends State<HomePage> {
                   ? Image.file(_image!, fit: BoxFit.cover)
                   : const Text('Por favor selecione a imagem'),
             ),
-            const SizedBox(height: 35),
+            const SizedBox(height: 30),
             fieldName(),
-            const SizedBox(height: 35),
+            const SizedBox(height: 30),
             fieldEmail(),
-            const SizedBox(height: 35),
+            const SizedBox(height: 30),
             fieldSenha(),
           ]),
         ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:app_gestao/Data/senha_entity.dart';
-import 'package:app_gestao/Data/senha_sqlite_datasource.dart';
+import 'package:projeto_flutter/listarSenhas.dart';
+
+import 'Data/senha_entity.dart';
+import 'Data/senha_sqlite_datasource.dart';
 
 class cadsenha extends StatefulWidget {
   @override
@@ -28,7 +30,7 @@ class _cadsenhaState extends State<cadsenha> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Cadastro de Senhas'),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.blue,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             color: Colors.black38,
@@ -49,8 +51,8 @@ class _cadsenhaState extends State<cadsenha> {
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
-          backgroundColor: Colors.green,
-          foregroundColor: Colors.black,
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white,
           onPressed: () {
             SenhaEntity senha = new SenhaEntity();
             senha.descricao = descricaoController.text;
@@ -58,6 +60,8 @@ class _cadsenhaState extends State<cadsenha> {
             senha.login = loginController.text;
             senha.senha = senhaController.text;
             SenhaSQLiteDataSource().create(senha);
+            Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => ListarSenhas()));
           },
         ),
       ),
@@ -116,7 +120,7 @@ class _cadsenhaState extends State<cadsenha> {
           hintText: "Informe a sua senha",
           labelText: 'Senha',
           helperText: "Digite uma senha para a sua segurança",
-          helperStyle: TextStyle(color: Colors.green),
+          helperStyle: TextStyle(color: Colors.blue),
           suffixIcon: IconButton(
             icon: Icon(ocultarSenha ? Icons.visibility : Icons.visibility_off),
             onPressed: () {

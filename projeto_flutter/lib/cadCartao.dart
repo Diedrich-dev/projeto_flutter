@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:app_gestao/Data/cartao_entity.dart';
-import 'package:app_gestao/Data/cartao_sqlite_datasource.dart';
+
+import 'Data/cartao_entity.dart';
+import 'Data/cartao_sqlite_datasource.dart';
+import 'listarCartoes.dart';
 
 class cadcartao extends StatefulWidget {
   @override
@@ -26,7 +28,7 @@ class cadcartaoState extends State<cadcartao> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Cadastro de cartões'),
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.blue,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             color: Colors.black38,
@@ -52,8 +54,8 @@ class cadcartaoState extends State<cadcartao> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.green,
-          foregroundColor: Colors.black,
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white,
           onPressed: () {
             CartaoEntity cartao = new CartaoEntity();
             cartao.descricao = descricaoController.text;
@@ -62,6 +64,8 @@ class cadcartaoState extends State<cadcartao> {
             cartao.cvv = cvvController.text;
             cartao.senha = senhaController.text;
             CartaoSQLiteDataSource().create(cartao);
+            Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => ListarCastoes()));
           },
           child: Icon(Icons.add),
         ),
@@ -183,7 +187,7 @@ class cadcartaoState extends State<cadcartao> {
       width: MediaQuery.of(context).size.width * .9,
       height: 250,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.green),
+          borderRadius: BorderRadius.circular(20), color: Colors.blue),
       child: Column(
         children: [fieldNumero(), fieldValidade(), fieldSenha(), textNome()],
       ),
@@ -206,7 +210,7 @@ class cadcartaoState extends State<cadcartao> {
       width: MediaQuery.of(context).size.width * .9,
       height: 250,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.teal),
+          borderRadius: BorderRadius.circular(20), color: Colors.blue),
       child: Column(
         children: [
           SizedBox(
@@ -218,7 +222,7 @@ class cadcartaoState extends State<cadcartao> {
           ),
           Container(
             height: 40,
-            color: Colors.grey,
+            color: Color.fromARGB(255, 229, 96, 0),
           ),
           fieldCvv(),
         ],

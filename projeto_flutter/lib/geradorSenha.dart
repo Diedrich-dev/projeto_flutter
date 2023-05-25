@@ -18,12 +18,12 @@ class GerarSenha extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.blue,
         title: const Text('Gerar Senha'),
       ),
       body: const _Body(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         onPressed: () {},
         child: Icon(Icons.password),
@@ -207,7 +207,7 @@ class _BodyState extends State<_Body> {
         style: TextStyle(fontSize: 20),
       ),
       style: ElevatedButton.styleFrom(
-        primary: Colors.green,
+        primary: Colors.blue,
         padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
