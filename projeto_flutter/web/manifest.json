@@ -1,6 +1,6 @@
 {
-    "name": "app_gestao",
-    "short_name": "app_gestao",
+    "name": "projeto_flutter",
+    "short_name": "projeto_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -32,7 +32,7 @@ class cadcartaoState extends State<cadcartao> {
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             color: Colors.black38,
-            onPressed: () => Navigator.pop(context, false),
+            onPressed: () => Navigator.pop(context),
           ),
         ),
         body: Column(
@@ -41,11 +41,11 @@ class cadcartaoState extends State<cadcartao> {
           children: <Widget>[
             fieldDescricao(),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             CartaoFrente(context),
             SizedBox(
-              height: 20,
+              height: 10,
             ),
             CartaoAtras(context),
             SizedBox(
@@ -187,7 +187,7 @@ class cadcartaoState extends State<cadcartao> {
       width: MediaQuery.of(context).size.width * .9,
       height: 250,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.blue),
+          borderRadius: BorderRadius.circular(20), color: Colors.grey),
       child: Column(
         children: [fieldNumero(), fieldValidade(), fieldSenha(), textNome()],
       ),
@@ -210,7 +210,7 @@ class cadcartaoState extends State<cadcartao> {
       width: MediaQuery.of(context).size.width * .9,
       height: 250,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.blue),
+          borderRadius: BorderRadius.circular(20), color: Colors.grey),
       child: Column(
         children: [
           SizedBox(

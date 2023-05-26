@@ -12,13 +12,17 @@ double _currentSliderValue = 0;
 String _pass = "";
 
 class GerarSenha extends StatelessWidget {
-  const GerarSenha({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            color: Colors.black38,
+            onPressed: () => Navigator.pop(context),
+          ),
         title: const Text('Gerar Senha'),
       ),
       body: const _Body(),
@@ -125,7 +129,7 @@ class _BodyState extends State<_Body> {
             ),
           ],
         ),
-        SizedBox(width: 3),
+        SizedBox(width: 2),
         Row(
           children: [
             Checkbox(
@@ -143,7 +147,7 @@ class _BodyState extends State<_Body> {
             ),
           ],
         ),
-        SizedBox(width: 3),
+        SizedBox(width: 2),
         Row(
           children: [
             Checkbox(
@@ -161,7 +165,7 @@ class _BodyState extends State<_Body> {
             ),
           ],
         ),
-        SizedBox(width: 3),
+        SizedBox(width: 2),
         Row(
           children: [
             Checkbox(
@@ -175,7 +179,7 @@ class _BodyState extends State<_Body> {
             ),
             Padding(
               padding: const EdgeInsets.only(left: 3),
-              child: Text('@#!'),
+              child: Text('@#'),
             ),
           ],
         ),

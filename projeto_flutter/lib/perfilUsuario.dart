@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class perfilUsuario extends StatelessWidget {
-  const perfilUsuario({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +51,7 @@ class _HomePageState extends State<HomePage> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.black38,
-          onPressed: () => Navigator.pop(context, false),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: SafeArea(
@@ -76,11 +75,11 @@ class _HomePageState extends State<HomePage> {
                   ? Image.file(_image!, fit: BoxFit.cover)
                   : const Text('Por favor selecione a imagem'),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             fieldName(),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             fieldEmail(),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             fieldSenha(),
           ]),
         ),
